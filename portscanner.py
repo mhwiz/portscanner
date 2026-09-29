@@ -94,7 +94,7 @@ while True:
         print(f"\nInvalid input: {e}\n")
         port_input = input("Please enter desired port(s): ")
 
-print(f"\nScanning {target_ip} on port(s) {len(ports)}...\n")
+print(f"\nScanning {target_ip} on port(s) {port_input.replace(' ', '')}...\n")
 
 
 def port_scan(port):
