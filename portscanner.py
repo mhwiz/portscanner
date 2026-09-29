@@ -35,7 +35,7 @@ while ifaceinput not in available_networks:
     print("\n", ifaceinput, "selected", "\n")
 
 
-def is_valid_ip(ip_str: str) -> bool:
+def valid_ip(ip_str: str) -> bool:
     try:
         ipaddress.ip_address(ip_str.strip())
         return True
@@ -43,7 +43,7 @@ def is_valid_ip(ip_str: str) -> bool:
         return False
 
 target_ip = input("Please enter target: ")
-while not is_valid_ip(target_ip):
+while not valid_ip(target_ip):
     print("\nInvalid IP address. Please try again.\n")
     target_ip = input("Please enter target: ")
 
