@@ -8,6 +8,9 @@ import ipaddress
 import time
 from queue import Queue
 
+clsc = "cls" if os.name == "nt" else "clear"
+subprocess.run(clsc, shell=True, check=True)
+
 banner = pyfiglet.figlet_format("mhwiz \nPython Port Scanner", font= 'doom')
 
 print(banner)
