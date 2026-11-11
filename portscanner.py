@@ -31,8 +31,6 @@ stats = psutil.net_if_stats()
 
 available_networks = []
 for iface, addr_list in addresses.items():
-    if iface == "lo":
-        continue
     has_valid_routable = any(
         addr.address is not None
         and addr.family == socket.AF_INET
@@ -40,8 +38,10 @@ for iface, addr_list in addresses.items():
         and not addr.address.startswith("127.")
         for addr in addr_list
     )
-    if has_valid_routable and iface in stats and stats[iface].isup:
+    if has_valid_routable:
         available_networks.append(iface)
+
+print(available_networks, "\n")
 
 ifaceinput = input("Select interface to use: ")
 while ifaceinput not in available_networks:
