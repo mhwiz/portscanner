@@ -2,11 +2,20 @@ import os
 import subprocess
 import socket
 import threading
-import pyfiglet
-import psutil
 import ipaddress
 import time
+import importlib
+import sys
 from queue import Queue
+
+for btstrp in ("pyfiglet", "psutil"):
+    try:
+        importlib.import_module(btstrp)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", btstrp])
+
+import pyfiglet
+import psutil
 
 clsc = "cls" if os.name == "nt" else "clear"
 subprocess.run(clsc, shell=True, check=True)
